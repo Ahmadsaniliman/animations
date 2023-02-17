@@ -20,9 +20,13 @@ class _CounterAnimationState extends State<CounterAnimation>
       vsync: this,
       duration: const Duration(seconds: 4),
     );
-    animation = Tween(begin: 0.0, end: 5.0).animate(_controller)
+    animation = Tween(begin: 0.0, end: 2.0).animate(_controller)
       ..addListener(() {})
-      ..addStatusListener((status) {});
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          _controller.reverse(from: 2.0);
+        }
+      });
     // animation = CurvedAnimation(
     //   parent: _controller,
     //   curve: Curves.decelerate,
@@ -54,7 +58,7 @@ class _CounterAnimationState extends State<CounterAnimation>
                 ? _counter.toStringAsFixed(2)
                 : 'Let"s Begin',
             style: TextStyle(
-              fontSize: 20.0 * _controller.value + 10.0,
+              fontSize: 20.0 * animation.value + 10.0,
             ),
           ),
         ),
