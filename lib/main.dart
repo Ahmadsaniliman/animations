@@ -1,5 +1,4 @@
 import 'package:animations/Animation/counter_animation.dart';
-import 'package:animations/Animation/curve_animation.dart';
 import 'package:flutter/material.dart';
 
 void main() {
